@@ -6,11 +6,18 @@ type UserListProps = {
 
 const UserList = ({ list }: UserListProps) => {
   return (
-    <div>
-      {list.map(user => {
-        return <li>{user.name}</li>;
+    <ul>
+      {list.map((user, idx) => {
+        return (
+          <li key={user.email + idx}>
+            <div className="flex gutter-1">
+              <span>{user.name}</span>
+              <span>{user.email}</span>
+            </div>
+          </li>
+        );
       })}
-    </div>
+    </ul>
   );
 };
 
