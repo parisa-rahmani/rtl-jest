@@ -25,3 +25,7 @@
 .col-direction {
   flex-direction: column;
 }
+
+.text-error {
+  color: red;
+}

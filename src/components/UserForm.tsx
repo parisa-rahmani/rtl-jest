@@ -7,20 +7,26 @@ type UserFormProps = {
 function UserForm({ onSubmit }: UserFormProps) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const resetData = () => {
+    setErrorMessage('');
+    setName('');
+    setEmail('');
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-
-    // if (!name || !email) {
-    //   setErrorMessage('name or email is empty');
-    //   return;
-    // }
+    if (!name || !email) {
+      setErrorMessage('name or email is empty');
+      return;
+    }
     onSubmit({ name, email });
+    resetData();
   };
   return (
     <>
-      {/* <p>{errorMessage}</p> */}
+      <p className="text-error">{errorMessage}</p>
       <form onSubmit={handleSubmit}>
         <div className="gutter-1 col-direction">
           <div className="gutter-1">
